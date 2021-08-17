@@ -17,7 +17,7 @@ Under resources, we have our feature files that we write on them our test steps 
 Under Java; we have pages, runners, step definitions and utilities packages. 
 Runners provide us connection between our feature files and step definitions. we have failed test runners, that provides
 us to rerun the failed tests automatically according to our setups. 
-Under utilities; we have Driver class that is created according to singleton design pattern. We can our other 
+Under utilities; we have Driver class that is created according to singleton design pattern. We can add our other 
 utility classes under this package whenever we need.
 
 

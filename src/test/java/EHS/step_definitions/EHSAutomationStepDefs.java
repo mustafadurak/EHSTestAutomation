@@ -41,12 +41,21 @@ public class EHSAutomationStepDefs {
 
     }
 
-    @Then("click all items open button respectively and get product ids to store")
-    public void click_all_items_open_button_respectively_and_get_product_ids_to_store() {
+    @Then("click all items open button respectively then verify to see all infos and get product ids to store")
+    public void click_all_items_open_button_respectively_then_verify_to_see_all_infos_and_get_product_ids_to_store() {
 
         for (int i=1; i<=allItemsPage.getAllItems().size(); i++){
             allItemsPage.clickOpens(i);
-           productId.add(itemPage.getProductId());
+
+           Assert.assertEquals("STD "+i,itemPage.getProductId());
+           Assert.assertTrue(itemPage.productId.isDisplayed());
+           Assert.assertTrue(itemPage.nameRow.isDisplayed());
+           Assert.assertTrue(itemPage.materialRow.isDisplayed());
+           Assert.assertTrue(itemPage.retailPriceRow.isDisplayed());
+
+            productId.add(itemPage.getProductId());
+
+           Driver.get().navigate().back();
         }
 
     }
@@ -63,8 +72,8 @@ public class EHSAutomationStepDefs {
         Assert.assertTrue(itemPage.retailPriceRow.isDisplayed());
     }
 
-    @When("Search EHSItem {int} and click find button")
-    public void search_EHSItem_and_click_find_button(Integer itemNumber) {
+    @When("Search EHSItem {int} with productId and click find button")
+    public void search_EHSItem_with_productId_and_click_find_button(Integer itemNumber) {
 
         homePage.productIdInputBox.sendKeys(productId.get(itemNumber));
         homePage.findButton.click();
